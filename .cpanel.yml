@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/alexoden/staging.alexoden.com/
+    - /usr/bin/rsync -a --delete --exclude='.git' --exclude='.well-known' --exclude='cgi-bin' ./ "$DEPLOYPATH"
