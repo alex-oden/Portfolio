@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé — Alex Oden · Aloden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+/* ===== PAGE-SPECIFIC: resume.html ===== */
+.wrap{max-width:1100px}
+.breadcrumb{padding:calc(var(--nh) + 2.5rem) 0 0;font-size:.8rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--tm);text-decoration:none;transition:color .2s}
+.breadcrumb a:hover{color:var(--o2)}
+.breadcrumb .sep{opacity:.4}
+.resume-hero{padding:2.5rem 0 3rem}
+.resume-hero-grid{display:grid;grid-template-columns:1fr auto;gap:2.5rem;align-items:flex-end;flex-wrap:wrap}
+.resume-name{font-family:var(--fd);font-weight:400;line-height:1;letter-spacing:-.03em;font-size:clamp(3rem,7vw,6rem);margin-bottom:1rem}
+.resume-name em{font-style:italic}
+.resume-role{font-size:clamp(1.1rem,1.5vw,1.35rem);color:var(--tm);font-weight:300;line-height:1.4;margin-bottom:1.5rem}
+.resume-role .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--o-grad);vertical-align:middle;margin:0 .5rem}
+.resume-contact{display:flex;flex-wrap:wrap;gap:1.25rem;font-size:.875rem;color:var(--tm)}
+.resume-contact a{color:var(--tm);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:color .2s}
+.resume-contact a:hover{color:var(--o2)}
+.resume-contact .ico{font-size:.95rem;color:var(--o2)}
+.dl-actions{display:flex;gap:.625rem;flex-shrink:0}
+.resume-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:3rem}
+.resume-meta-cell{background:var(--bg);padding:1.35rem 1.5rem;transition:background .3s}
+.resume-meta-cell:hover{background:var(--bg2)}
+.resume-meta-lbl{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ts);margin-bottom:.55rem;font-weight:500;display:flex;align-items:center;gap:.4rem}
+.resume-meta-lbl::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--o-grad);opacity:.6}
+.resume-meta-val{font-size:.95rem;color:var(--t);font-weight:500;line-height:1.35}
+.resume-meta-val.avail{display:inline-flex;align-items:center;gap:.5rem;color:var(--o2)}
+.av-pulse{width:7px;height:7px;background:#5CB85C;border-radius:50%;box-shadow:0 0 0 0 rgba(92,184,92,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(92,184,92,.6)}70%{box-shadow:0 0 0 8px rgba(92,184,92,0)}100%{box-shadow:0 0 0 0 rgba(92,184,92,0)}}
+.resume-summary{padding:3rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:3.5rem}
+.summary-grid{display:grid;grid-template-columns:240px 1fr;gap:3rem;align-items:start}
+.summary-num{font-family:var(--fd);font-style:italic;font-size:2.25rem;color:var(--o2);font-weight:400;letter-spacing:-.02em;line-height:1}
+.summary-num-lbl{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ts);margin-top:.5rem;font-weight:500}
+.summary-text{font-size:1.1rem;line-height:1.7;color:var(--tm);max-width:720px}
+.summary-text strong{color:var(--t);font-weight:500}
+.summary-text em{font-style:italic;color:var(--o3)}
+.resume-content{padding:4rem 0 6rem;display:grid;grid-template-columns:240px 1fr;gap:3rem;align-items:start}
+.section-label{position:sticky;top:calc(var(--nh) + 2rem);font-family:var(--fd);font-style:italic;font-size:2rem;color:var(--o2);font-weight:400;letter-spacing:-.02em;line-height:1}
+.section-label-sub{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ts);margin-top:.5rem;font-weight:500;font-family:var(--fb);font-style:normal}
+.section-block{margin-bottom:5rem}
+.section-block:last-child{margin-bottom:0}
+.exp{position:relative;padding-left:2rem;border-left:1px solid var(--line);padding-bottom:2.5rem}
+.exp:last-child{padding-bottom:0}
+.exp::before{content:'';position:absolute;left:-6px;top:.25rem;width:11px;height:11px;border-radius:50%;background:var(--o-grad);box-shadow:0 0 0 4px var(--bg)}
+.exp-period{display:inline-block;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--o2);background:var(--o-soft);padding:.25rem .7rem;border-radius:99px;border:1px solid var(--o-border);margin-bottom:.85rem;font-weight:500}
+.exp-role{font-family:var(--fd);font-size:1.5rem;font-weight:400;color:var(--t);margin-bottom:.3rem;letter-spacing:-.01em;line-height:1.2}
+.exp-org{font-size:.95rem;color:var(--tm);margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem}
+.exp-org-sep{opacity:.4}
+.exp-desc{font-size:.92rem;color:var(--tm);line-height:1.7;margin-bottom:1rem}
+.exp-list{margin-top:.75rem;padding-left:1.25rem;list-style:none}
+.exp-list li{position:relative;font-size:.875rem;color:var(--tm);line-height:1.65;padding-bottom:.5rem}
+.exp-list li::before{content:'';position:absolute;left:-1.25rem;top:.6rem;width:6px;height:6px;border-radius:50%;background:var(--o2);opacity:.6}
+.exp-list li strong{color:var(--t);font-weight:500}
+.exp-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.exp-tag{font-size:.7rem;padding:.2rem .65rem;border-radius:99px;background:rgba(255,255,255,.05);color:var(--tm);border:1px solid var(--line)}
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cert{padding:1.5rem;background:var(--bg2);border:1px solid var(--line);border-radius:16px;transition:border-color .3s}
+.cert:hover{border-color:var(--o-border)}
+.cert-year{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--o2);font-weight:500;margin-bottom:.5rem}
+.cert-name{font-family:var(--fd);font-size:1.15rem;font-weight:400;color:var(--t);margin-bottom:.35rem;line-height:1.25}
+.cert-org{font-size:.82rem;color:var(--tm);line-height:1.5}
+.skills-group{margin-bottom:2rem}
+.skills-group:last-child{margin-bottom:0}
+.skills-group-title{display:flex;align-items:center;gap:.55rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ts);margin-bottom:.85rem;font-weight:500}
+.skills-group-title .dot{width:5px;height:5px;border-radius:50%;background:var(--o-grad)}
+.lang{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0;border-bottom:1px solid var(--line)}
+.lang:last-child{border-bottom:none}
+.lang-name{font-size:.95rem;color:var(--t);font-weight:500}
+.lang-level{font-size:.78rem;color:var(--o2);letter-spacing:.04em;text-transform:uppercase;font-weight:500}
+.lang-bar{flex:1;height:3px;background:var(--line);margin:0 1.25rem;border-radius:2px;position:relative;overflow:hidden;max-width:180px}
+.lang-bar-fill{position:absolute;top:0;left:0;height:100%;background:var(--o-grad);border-radius:2px}
+.award{display:flex;gap:1.25rem;padding:1.25rem 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.award:last-child{border-bottom:none}
+.award-year{font-family:var(--fd);font-style:italic;font-size:1.5rem;color:var(--o2);font-weight:400;flex-shrink:0;min-width:80px;letter-spacing:-.02em;line-height:1.1}
+.award-body{flex:1}
+.award-title{font-size:.95rem;color:var(--t);font-weight:500;margin-bottom:.25rem;line-height:1.4}
+.award-org{font-size:.82rem;color:var(--tm)}
+.resume-cta{padding:5rem 0;background:var(--bg2);border-top:1px solid var(--line);text-align:center;position:relative;overflow:hidden}
+.resume-cta::before{content:'';position:absolute;width:70vw;height:50vh;background:radial-gradient(ellipse at center,var(--o-soft2),transparent 60%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;filter:blur(40px)}
+.resume-cta-inner{position:relative;z-index:1}
+.resume-cta-h{font-family:var(--fd);font-size:clamp(2rem,4vw,3.25rem);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.25rem}
+.resume-cta-h em{font-style:italic}
+.resume-cta-sub{color:var(--tm);font-size:1.05rem;max-width:520px;margin:0 auto 2.25rem;line-height:1.55}
+.resume-cta-actions{display:flex;justify-content:center;gap:.625rem;flex-wrap:wrap}
+@media(max-width:840px){
+  .resume-hero-grid{grid-template-columns:1fr;align-items:flex-start}
+  .resume-meta{grid-template-columns:1fr 1fr}
+  .resume-meta-cell:nth-child(1),.resume-meta-cell:nth-child(2){border-bottom:1px solid var(--line)}
+  .summary-grid,.resume-content{grid-template-columns:1fr;gap:1.5rem}
+  .section-label{position:static}
+  .cert-grid{grid-template-columns:1fr}
+}
+
+/* ===== PRINT STYLES (PDF download) ===== */
+@media print{
+  *,*::before,*::after{background:transparent !important;color:#1a1a1a !important;box-shadow:none !important;text-shadow:none !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{margin:14mm 12mm;size:A4}
+  html,body{background:#fff !important;font-size:10pt;line-height:1.45;color:#1a1a1a;overflow:visible}
+  nav,.glow,footer,.resume-cta,.dl-actions,.breadcrumb,.mobile-menu,.hamburger{display:none !important}
+  .fu{opacity:1 !important;transform:none !important}
+  .wrap{max-width:100%;padding:0}
+  .resume-hero{padding:0 0 8pt}
+  .resume-hero-grid{display:block}
+  .resume-name{font-size:24pt !important;color:#FF5722 !important;line-height:1.1;margin-bottom:2pt}
+  .resume-name em,.resume-name .grad{color:#FF5722 !important;-webkit-text-fill-color:#FF5722 !important;background:none !important;font-style:italic}
+  .resume-role{font-size:11pt !important;color:#444 !important;margin-bottom:4pt;line-height:1.3}
+  .resume-role .dot{display:inline-block;width:3pt;height:3pt;border-radius:50%;background:#FF5722 !important;vertical-align:middle;margin:0 4pt}
+  .resume-contact{display:flex !important;flex-wrap:wrap;gap:6pt 14pt;font-size:8.5pt;color:#555 !important;border-bottom:1px solid #ddd;padding-bottom:8pt;margin-bottom:10pt}
+  .resume-contact a{color:#555 !important}
+  .resume-contact .ico{color:#FF5722 !important}
+  .resume-meta{display:grid !important;grid-template-columns:repeat(4,1fr);gap:8pt;border:none !important;background:transparent !important;border-radius:0;padding:6pt 0;margin-top:0;border-bottom:1px solid #ddd !important;padding-bottom:10pt;margin-bottom:10pt}
+  .resume-meta-cell{padding:0 !important;border:none !important;background:transparent !important}
+  .resume-meta-lbl{font-size:7pt !important;color:#888 !important;letter-spacing:.1em;margin-bottom:2pt}
+  .resume-meta-lbl::before{background:#FF5722 !important;width:3pt;height:3pt}
+  .resume-meta-val{font-size:9pt !important;color:#1a1a1a !important;line-height:1.3}
+  .resume-meta-val.avail{color:#2a8a2a !important}
+  .av-pulse{background:#2a8a2a !important;animation:none !important;box-shadow:none !important;width:4pt;height:4pt}
+  .resume-summary{padding:6pt 0 10pt;border-top:none !important;border-bottom:1px solid #ddd !important;margin-top:0}
+  .summary-grid{grid-template-columns:60pt 1fr;gap:14pt}
+  .summary-num{font-size:14pt !important;color:#FF5722 !important;font-style:italic}
+  .summary-num-lbl{font-size:7pt !important;color:#888 !important}
+  .summary-text{font-size:9.5pt !important;line-height:1.5;color:#333 !important;max-width:100%}
+  .summary-text strong{color:#1a1a1a !important;font-weight:600}
+  .summary-text em{font-style:italic;color:#FF5722 !important}
+  .resume-content{grid-template-columns:80pt 1fr;gap:14pt;padding:10pt 0 0}
+  .section-label{font-size:14pt !important;color:#FF5722 !important;font-style:italic;position:static !important;font-family:'Instrument Serif',Georgia,serif !important}
+  .section-label-sub{font-size:7pt !important;color:#888 !important;letter-spacing:.1em;margin-top:1pt}
+  .section-block{margin-bottom:14pt;page-break-inside:avoid}
+  .exp{padding-left:14pt;border-left:1.5pt solid #e8e8e8 !important;padding-bottom:10pt}
+  .exp::before{background:#FF5722 !important;width:7pt;height:7pt;box-shadow:0 0 0 2pt #fff !important;left:-4pt}
+  .exp-period{font-size:7pt !important;color:#FF5722 !important;background:#fff3ec !important;border:1px solid #ffd5b8 !important;padding:1.5pt 6pt;border-radius:99px;margin-bottom:4pt;letter-spacing:.05em}
+  .exp-role{font-size:12pt !important;color:#1a1a1a !important;margin-bottom:1pt;line-height:1.2}
+  .exp-org{font-size:9pt !important;color:#666 !important;margin-bottom:4pt}
+  .exp-org-sep{color:#bbb !important}
+  .exp-desc{font-size:9pt !important;color:#444 !important;margin-bottom:4pt;line-height:1.45}
+  .exp-list{margin-top:3pt;padding-left:10pt}
+  .exp-list li{font-size:8.5pt !important;color:#444 !important;padding-bottom:2pt;line-height:1.4;page-break-inside:avoid}
+  .exp-list li::before{background:#FF5722 !important;opacity:.7;width:3pt;height:3pt;top:5pt;left:-9pt}
+  .exp-list li strong{color:#1a1a1a !important}
+  .exp-tags{display:flex !important;flex-wrap:wrap;gap:3pt;margin-top:4pt}
+  .exp-tag{font-size:7pt !important;padding:1pt 5pt;border-radius:99px;background:#f5f5f5 !important;color:#666 !important;border:1px solid #e5e5e5 !important}
+  .cert-grid{display:grid !important;grid-template-columns:1fr 1fr;gap:6pt}
+  .cert{padding:7pt 9pt !important;background:#fafafa !important;border:1px solid #e8e8e8 !important;border-radius:6pt;page-break-inside:avoid}
+  .cert-year{font-size:7pt !important;color:#FF5722 !important;letter-spacing:.08em;margin-bottom:2pt}
+  .cert-name{font-size:10pt !important;color:#1a1a1a !important;margin-bottom:2pt;font-family:'Instrument Serif',Georgia,serif !important}
+  .cert-org{font-size:8pt !important;color:#666 !important;line-height:1.35}
+  .skills-group{margin-bottom:6pt;page-break-inside:avoid}
+  .skills-group-title{font-size:7pt !important;color:#888 !important;letter-spacing:.1em;margin-bottom:3pt}
+  .skills-group-title .dot{background:#FF5722 !important;width:3pt;height:3pt}
+  .skill-cloud{gap:3pt}
+  .skill{font-size:7.5pt !important;padding:1pt 6pt;background:#fafafa !important;border:1px solid #e5e5e5 !important;color:#444 !important;border-radius:99px}
+  .skill.primary{background:#fff3ec !important;color:#FF5722 !important;border-color:#ffd5b8 !important}
+  .lang{padding:3pt 0;border-bottom:1px solid #eee !important;page-break-inside:avoid}
+  .lang-name{font-size:9pt !important;color:#1a1a1a !important}
+  .lang-level{font-size:7pt !important;color:#FF5722 !important}
+  .lang-bar{height:2pt;background:#eee !important;max-width:90pt;margin:0 8pt}
+  .lang-bar-fill{background:#FF5722 !important}
+  .award{padding:4pt 0;border-bottom:1px solid #eee !important;gap:10pt;page-break-inside:avoid}
+  .award-year{font-size:11pt !important;color:#FF5722 !important;font-style:italic;min-width:38pt}
+  .award-title{font-size:9pt !important;color:#1a1a1a !important;margin-bottom:1pt;line-height:1.3}
+  .award-org{font-size:7.5pt !important;color:#666 !important}
+  a{text-decoration:none !important}
+}
+</style>
+</head>
+<body>
+
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<nav id="nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><span class="logo-dot"></span>Aloden</a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="resume.html" class="active">Résumé</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="index.html#contact" class="nav-cta">Let's talk →</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-menu-links" aria-label="Mobile navigation menu">
+    <a href="work.html"><span class="num">01</span>Work</a>
+    <a href="index.html#services"><span class="num">02</span>Services</a>
+    <a href="blog.html"><span class="num">03</span>Blog</a>
+    <a href="resume.html"><span class="num">04</span>Résumé</a>
+  </nav>
+  <div class="mobile-menu-foot">
+    <a href="index.html#contact" class="mobile-menu-cta">Let's talk →</a>
+    <div class="mobile-menu-social"><a href="#">LinkedIn</a><a href="#">Dribbble</a><a href="mailto:hello@aloden.nl">Email</a></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="breadcrumb fu">
+    <a href="index.html">Home</a><span class="sep">/</span><span>Résumé</span>
+  </div>
+</div>
+
+<section class="resume-hero">
+  <div class="wrap">
+    <div class="resume-hero-grid">
+      <div>
+        <div class="label fu"><span class="dot"></span>Résumé · Updated May 2026</div>
+        <h1 class="resume-name fu" style="transition-delay:.06s"><em class="grad">Alex</em> Oden</h1>
+        <p class="resume-role fu" style="transition-delay:.12s">Senior UX & Service Designer<span class="dot"></span>Based in the Netherlands<span class="dot"></span>5+ years of practice</p>
+        <div class="resume-contact fu" style="transition-delay:.18s">
+          <a href="mailto:hello@aloden.nl"><span class="ico">✉</span>hello@aloden.nl</a>
+          <a href="#"><span class="ico">⌖</span>aloden.nl</a>
+          <a href="#"><span class="ico">in</span>linkedin.com/in/alexoden</a>
+          <a href="#"><span class="ico">⌘</span>dribbble.com/aloden</a>
+        </div>
+      </div>
+      <div class="dl-actions fu" style="transition-delay:.24s">
+        <button class="btn-p" onclick="window.print()"><span>Download PDF</span><span class="arr">↓</span></button>
+        <button class="btn-s" onclick="window.print()"><span>Print</span></button>
+      </div>
+    </div>
+    <div class="resume-meta fu" style="transition-delay:.3s">
+      <div class="resume-meta-cell"><div class="resume-meta-lbl">Location</div><div class="resume-meta-val">Netherlands 🇳🇱</div></div>
+      <div class="resume-meta-cell"><div class="resume-meta-lbl">Focus</div><div class="resume-meta-val">UX · Service Design</div></div>
+      <div class="resume-meta-cell"><div class="resume-meta-lbl">Experience</div><div class="resume-meta-val">5+ years</div></div>
+      <div class="resume-meta-cell"><div class="resume-meta-lbl">Status</div><div class="resume-meta-val avail"><span class="av-pulse"></span>Open to work</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="resume-summary">
+  <div class="wrap">
+    <div class="summary-grid fu">
+      <div><div class="summary-num">00.</div><div class="summary-num-lbl">Summary</div></div>
+      <div class="summary-text">
+        <p>Senior designer with 5+ years of practice across <strong>UX research, service design, and interaction design</strong>. I help teams turn complex problems into clear, considered, and beautifully crafted digital products — across SaaS, public sector, fintech, and clean tech.</p>
+        <p style="margin-top:1rem">Comfortable leading research, facilitating cross-functional workshops, building design systems, and mentoring mid-level designers. I care about <em>craft, clarity, and outcomes</em> — not just the deliverable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="resume-content">
+    <div class="section-label fu">01.<div class="section-label-sub">Experience</div></div>
+    <div class="section-block fu">
+      <div class="exp">
+        <div class="exp-period">2023 — Present · 3 yrs</div>
+        <div class="exp-role">Senior UX Designer</div>
+        <div class="exp-org">Add Company<span class="exp-org-sep">·</span>Netherlands<span class="exp-org-sep">·</span>Full-time</div>
+        <p class="exp-desc">Leading end-to-end UX design across two SaaS products, managing stakeholder alignment, and building a shared design practice across three product teams.</p>
+        <ul class="exp-list">
+          <li>Led the onboarding redesign that reduced first-session drop-off by <strong>38%</strong> and cut time-to-value from 14 days to 3.</li>
+          <li>Established a research-and-synthesis playbook used by 5 designers across 3 squads.</li>
+          <li>Mentored 2 mid-level designers, one promoted to senior within a year.</li>
+          <li>Built and maintain the company's design system (Figma, 80+ components, 3 surfaces).</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">SaaS</span><span class="exp-tag">Design Systems</span><span class="exp-tag">Research</span><span class="exp-tag">Mentoring</span></div>
+      </div>
+      <div class="exp">
+        <div class="exp-period">2021 — 2023 · 2 yrs</div>
+        <div class="exp-role">UX / Service Designer</div>
+        <div class="exp-org">Add Company<span class="exp-org-sep">·</span>Netherlands<span class="exp-org-sep">·</span>Full-time</div>
+        <p class="exp-desc">Responsible for research, blueprinting, and interaction design across public-sector and clean-tech engagements. Introduced a formal service design practice.</p>
+        <ul class="exp-list">
+          <li>Mapped citizen journeys for a Dutch municipality, surfacing <strong>14 systemic gaps</strong> that informed a multi-year strategy.</li>
+          <li>Designed the energy monitoring dashboard for an SME-focused BESS provider.</li>
+          <li>Ran 60+ user interviews across 4 projects; built the internal research repository.</li>
+          <li>Facilitated 12 cross-functional design sprints.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">Service Design</span><span class="exp-tag">Public Sector</span><span class="exp-tag">Clean Tech</span><span class="exp-tag">Facilitation</span></div>
+      </div>
+      <div class="exp">
+        <div class="exp-period">2019 — 2021 · 2 yrs</div>
+        <div class="exp-role">UX Designer</div>
+        <div class="exp-org">Add Company<span class="exp-org-sep">·</span>Netherlands<span class="exp-org-sep">·</span>Full-time</div>
+        <p class="exp-desc">Designed web and mobile experiences with iterative research and close collaboration with product and engineering squads.</p>
+        <ul class="exp-list">
+          <li>Shipped <strong>11 product features</strong> end-to-end, from framing to post-launch measurement.</li>
+          <li>Introduced usability testing as a regular cadence; saved ~6 weeks of rework on a major redesign.</li>
+          <li>Contributed to the company's first design system.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">UX Design</span><span class="exp-tag">Usability Testing</span><span class="exp-tag">Mobile</span></div>
+      </div>
+      <div class="exp">
+        <div class="exp-period">2018 — 2019 · 1 yr</div>
+        <div class="exp-role">Junior Designer / UI Designer</div>
+        <div class="exp-org">Add Agency<span class="exp-org-sep">·</span>Netherlands<span class="exp-org-sep">·</span>Contract</div>
+        <p class="exp-desc">Agency role designing marketing sites, brand identities, and product UI for SME clients. Where I cut my teeth on Figma and client communication.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="resume-content" style="padding-top:1rem">
+    <div class="section-label fu">02.<div class="section-label-sub">Education & Certifications</div></div>
+    <div class="section-block fu">
+      <div class="cert-grid">
+        <div class="cert"><div class="cert-year">2014 — 2018</div><div class="cert-name">Add Degree / Programme</div><div class="cert-org">Add University · Netherlands</div></div>
+        <div class="cert"><div class="cert-year">2023</div><div class="cert-name">Service Design Foundations</div><div class="cert-org">Add Issuing Organisation</div></div>
+        <div class="cert"><div class="cert-year">2022</div><div class="cert-name">UX Research Certification</div><div class="cert-org">Nielsen Norman Group</div></div>
+        <div class="cert"><div class="cert-year">2021</div><div class="cert-name">Design Sprint Master</div><div class="cert-org">AJ&Smart / GV</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="resume-content" style="padding-top:1rem">
+    <div class="section-label fu">03.<div class="section-label-sub">Skills & Toolkit</div></div>
+    <div class="section-block fu">
+      <div class="skills-group">
+        <div class="skills-group-title"><span class="dot"></span>Design & Prototyping</div>
+        <div class="skill-cloud"><span class="skill primary">Figma</span><span class="skill primary">FigJam</span><span class="skill">Adobe XD</span><span class="skill">Sketch</span><span class="skill">Framer</span><span class="skill">ProtoPie</span><span class="skill">Principle</span></div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-title"><span class="dot"></span>Research Methods</div>
+        <div class="skill-cloud"><span class="skill primary">User Interviews</span><span class="skill primary">Usability Testing</span><span class="skill">Diary Studies</span><span class="skill">Card Sorting</span><span class="skill">Tree Testing</span><span class="skill">A/B Testing</span><span class="skill">Heuristic Evaluation</span></div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-title"><span class="dot"></span>Service Design</div>
+        <div class="skill-cloud"><span class="skill primary">Service Blueprinting</span><span class="skill primary">Journey Mapping</span><span class="skill">Stakeholder Maps</span><span class="skill">Systems Thinking</span><span class="skill">Design Sprints</span><span class="skill">JTBD</span><span class="skill">Personas</span></div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-title"><span class="dot"></span>Collaboration & Delivery</div>
+        <div class="skill-cloud"><span class="skill primary">Miro</span><span class="skill">Jira</span><span class="skill">Notion</span><span class="skill">Confluence</span><span class="skill">Agile / Scrum</span><span class="skill">Design Thinking</span><span class="skill">HTML / CSS</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="resume-content" style="padding-top:1rem">
+    <div class="section-label fu">04.<div class="section-label-sub">Languages</div></div>
+    <div class="section-block fu">
+      <div class="lang"><div class="lang-name">Dutch</div><div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div><div class="lang-level">Native</div></div>
+      <div class="lang"><div class="lang-name">English</div><div class="lang-bar"><div class="lang-bar-fill" style="width:95%"></div></div><div class="lang-level">Fluent (C2)</div></div>
+      <div class="lang"><div class="lang-name">Russian</div><div class="lang-bar"><div class="lang-bar-fill" style="width:65%"></div></div><div class="lang-level">Intermediate (B2)</div></div>
+      <div class="lang"><div class="lang-name">German</div><div class="lang-bar"><div class="lang-bar-fill" style="width:35%"></div></div><div class="lang-level">Beginner (A2)</div></div>
+    </div>
+  </div>
+
+  <div class="resume-content" style="padding-top:1rem;padding-bottom:0">
+    <div class="section-label fu">05.<div class="section-label-sub">Recognition & Speaking</div></div>
+    <div class="section-block fu">
+      <div class="award"><div class="award-year">2025</div><div class="award-body"><div class="award-title">Speaker — "Service blueprints as living documents"</div><div class="award-org">Service Design Network · Amsterdam</div></div></div>
+      <div class="award"><div class="award-year">2024</div><div class="award-body"><div class="award-title">Awwwards — Site of the Day mention</div><div class="award-org">Add Project Name</div></div></div>
+      <div class="award"><div class="award-year">2024</div><div class="award-body"><div class="award-title">Guest mentor — UX bootcamp program</div><div class="award-org">Add Bootcamp Name · Online</div></div></div>
+      <div class="award"><div class="award-year">2023</div><div class="award-body"><div class="award-title">Workshop facilitator — "Designing for ambiguity"</div><div class="award-org">Internal cross-team event · 40 attendees</div></div></div>
+    </div>
+  </div>
+</div>
+
+<section class="resume-cta">
+  <div class="wrap">
+    <div class="resume-cta-inner">
+      <h2 class="resume-cta-h fu">Like what you see? <em class="grad">Let's chat.</em></h2>
+      <p class="resume-cta-sub fu" style="transition-delay:.06s">Available for senior UX & service design roles in the Netherlands. Open to freelance and full-time conversations.</p>
+      <div class="resume-cta-actions fu" style="transition-delay:.12s">
+        <a href="mailto:hello@aloden.nl" class="btn-p"><span>Get in touch</span><span class="arr">→</span></a>
+        <button class="btn-s" onclick="window.print()"><span>Download résumé as PDF</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Aloden — Alex Oden</span>
+  <span><a href="index.html">Home</a> · <a href="work.html">Work</a> · <a href="blog.html">Blog</a> · <a href="resume.html">Résumé</a></span>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

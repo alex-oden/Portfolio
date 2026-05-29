@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Aloden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+/* ===== PAGE-SPECIFIC: blog.html ===== */
+.page-hero{padding:calc(var(--nh) + 5rem) 0 4rem;position:relative}
+.page-hero-sub{font-size:clamp(1rem,1.5vw,1.15rem);color:var(--tm);max-width:620px;margin-top:1.5rem;line-height:1.55}
+.cats{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:3rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line)}
+.cat{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border-radius:99px;background:var(--bg2);border:1px solid var(--line);color:var(--tm);font-size:.8rem;cursor:pointer;transition:all .25s;font-family:inherit}
+.cat:hover{border-color:var(--o-border);color:var(--t)}
+.cat.active{background:var(--o-soft);color:var(--o2);border-color:var(--o-border)}
+section.posts{padding:4rem 0 7rem}
+.featured-post{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;padding:2.5rem;background:var(--bg2);border:1px solid var(--line);border-radius:24px;margin-bottom:5rem;text-decoration:none;color:inherit;transition:border-color .3s,transform .3s;cursor:pointer}
+.featured-post:hover{border-color:var(--o-border);transform:translateY(-3px)}
+.featured-visual{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#FF5722,#FF8A3D 60%,#FFB366);position:relative;display:flex;align-items:center;justify-content:center}
+.featured-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.2),transparent 60%)}
+.featured-visual-mark{font-family:var(--fd);font-size:8rem;font-style:italic;color:rgba(255,255,255,.95);line-height:1;letter-spacing:-.03em}
+.featured-content{display:flex;flex-direction:column;gap:1rem}
+.featured-meta{display:flex;align-items:center;gap:.75rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ts)}
+.featured-cat{color:var(--o2);font-weight:500}
+.featured-title{font-family:var(--fd);font-size:clamp(1.85rem,3vw,2.65rem);font-weight:400;line-height:1.15;letter-spacing:-.015em}
+.featured-excerpt{color:var(--tm);font-size:.95rem;line-height:1.65}
+.featured-foot{display:flex;align-items:center;gap:1rem;margin-top:.75rem;font-size:.8rem;color:var(--ts)}
+.featured-author{display:flex;align-items:center;gap:.5rem}
+.featured-avatar{width:28px;height:28px;border-radius:50%;background:var(--o-grad);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:600}
+.featured-arr{margin-left:auto;width:36px;height:36px;border-radius:50%;background:var(--o-grad);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;transition:transform .3s}
+.featured-post:hover .featured-arr{transform:rotate(-45deg) scale(1.1)}
+.posts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.post{display:flex;flex-direction:column;background:var(--bg2);border:1px solid var(--line);border-radius:20px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .3s,transform .3s;cursor:pointer}
+.post:hover{border-color:var(--o-border);transform:translateY(-4px)}
+.post-visual{aspect-ratio:16/9;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.post-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(255,255,255,.15),transparent 60%)}
+.post-visual-mark{font-family:var(--fd);font-size:5rem;font-style:italic;color:rgba(255,255,255,.95);line-height:1;letter-spacing:-.03em;position:relative;z-index:1}
+.bg-1{background:linear-gradient(135deg,#FF5722,#FF8A3D)}
+.bg-2{background:linear-gradient(135deg,#FF8A3D,#FFB366)}
+.bg-3{background:linear-gradient(135deg,#7B4FFF,#FF5722)}
+.bg-4{background:linear-gradient(135deg,#2a1408,#FF8A3D)}
+.bg-5{background:linear-gradient(135deg,#FF5722,#7B4FFF)}
+.bg-6{background:linear-gradient(135deg,#FFB366,#FF5722)}
+.bg-7{background:linear-gradient(135deg,#1a1a1a,#FF6B2B)}
+.bg-8{background:linear-gradient(135deg,#FF5722,#FFB366,#FF8A3D)}
+.post-body{padding:1.5rem;display:flex;flex-direction:column;gap:.85rem;flex:1}
+.post-meta{display:flex;align-items:center;gap:.5rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ts)}
+.post-cat{color:var(--o2);font-weight:500}
+.post-title{font-family:var(--fd);font-size:1.4rem;font-weight:400;line-height:1.2;letter-spacing:-.01em}
+.post-excerpt{color:var(--tm);font-size:.85rem;line-height:1.6;flex:1}
+.post-foot{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--line);font-size:.75rem;color:var(--ts);margin-top:auto}
+.newsletter{margin-top:5rem;padding:3rem;background:var(--bg2);border:1px solid var(--line);border-radius:24px;text-align:center;position:relative;overflow:hidden}
+.newsletter::before{content:'';position:absolute;width:60vw;height:40vh;background:radial-gradient(ellipse at center,var(--o-soft2),transparent 60%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;filter:blur(40px)}
+.newsletter-inner{position:relative;z-index:1}
+.newsletter-h{font-family:var(--fd);font-size:clamp(1.75rem,3vw,2.5rem);font-weight:400;line-height:1.1;margin-bottom:1rem;letter-spacing:-.015em}
+.newsletter-sub{color:var(--tm);font-size:.95rem;margin-bottom:2rem;max-width:460px;margin-left:auto;margin-right:auto}
+.newsletter-form{display:flex;gap:.5rem;max-width:440px;margin:0 auto;flex-wrap:wrap}
+.newsletter-input{flex:1;min-width:200px;padding:.85rem 1.2rem;border-radius:99px;background:var(--bg);border:1px solid var(--line2);color:var(--t);font-family:inherit;font-size:.85rem;outline:none;transition:border-color .2s}
+.newsletter-input:focus{border-color:var(--o2)}
+.newsletter-input::placeholder{color:var(--ts)}
+.newsletter-btn{padding:.85rem 1.6rem;border-radius:99px;background:var(--o-grad);color:#fff;border:none;font-family:inherit;font-size:.85rem;font-weight:500;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.newsletter-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(255,87,34,.4)}
+@media(max-width:840px){
+  .featured-post{grid-template-columns:1fr;padding:1.5rem}
+  .posts-grid{grid-template-columns:1fr}
+  .newsletter{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<nav id="nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><span class="logo-dot"></span>Aloden</a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="resume.html">Résumé</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="index.html#contact" class="nav-cta">Let's talk →</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-menu-links" aria-label="Mobile navigation menu">
+    <a href="work.html"><span class="num">01</span>Work</a>
+    <a href="index.html#services"><span class="num">02</span>Services</a>
+    <a href="blog.html"><span class="num">03</span>Blog</a>
+    <a href="resume.html"><span class="num">04</span>Résumé</a>
+  </nav>
+  <div class="mobile-menu-foot">
+    <a href="index.html#contact" class="mobile-menu-cta">Let's talk →</a>
+    <div class="mobile-menu-social"><a href="#">LinkedIn</a><a href="#">Dribbble</a><a href="mailto:hello@aloden.nl">Email</a></div>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="wrap-mid">
+    <div class="label fu"><span class="dot"></span>Writing · 2022 — 2026</div>
+    <h1 class="h-display fu" style="transition-delay:.08s">Notes from the<br><em class="grad">design practice</em>.</h1>
+    <p class="page-hero-sub fu" style="transition-delay:.16s">Essays, field notes, and process breakdowns from years of UX and service design work. Slow thoughts, written for designers who care about craft.</p>
+    <div class="cats fu" style="transition-delay:.24s">
+      <button class="cat active">All</button><button class="cat">Process</button><button class="cat">UX Research</button><button class="cat">Service Design</button><button class="cat">Career</button><button class="cat">Tools</button>
+    </div>
+  </div>
+</section>
+
+<section class="posts">
+  <div class="wrap-mid">
+    <a href="blog-single.html" class="featured-post fu">
+      <div class="featured-visual"><span class="featured-visual-mark">Aa</span></div>
+      <div class="featured-content">
+        <div class="featured-meta"><span class="featured-cat">Process</span><span>·</span><span>May 24, 2026</span><span>·</span><span>12 min read</span></div>
+        <h2 class="featured-title">Why your design research synthesis takes three times longer than it should</h2>
+        <p class="featured-excerpt">After running 22 user interviews on my last project, I learned a painful lesson about when to start tagging. A practical guide to front-loading your synthesis frameworks before the first session.</p>
+        <div class="featured-foot"><div class="featured-author"><div class="featured-avatar">AO</div><span>Alex Oden</span></div><div class="featured-arr">↗</div></div>
+      </div>
+    </a>
+
+    <div class="posts-grid">
+      <a href="blog-single.html" class="post fu"><div class="post-visual bg-2"><span class="post-visual-mark">SD</span></div><div class="post-body"><div class="post-meta"><span class="post-cat">Service Design</span><span>·</span><span>May 10, 2026</span></div><h3 class="post-title">Service blueprints are not deliverables — they're conversations</h3><p class="post-excerpt">How I stopped treating blueprints as final documents and started using them as living facilitation tools.</p><div class="post-foot"><span>8 min read</span><span>↗</span></div></div></a>
+      <a href="blog-single.html" class="post fu"><div class="post-visual bg-3"><span class="post-visual-mark">UX</span></div><div class="post-body"><div class="post-meta"><span class="post-cat">UX Research</span><span>·</span><span>Apr 28, 2026</span></div><h3 class="post-title">The five questions I ask in every user interview</h3><p class="post-excerpt">After hundreds of sessions, I've narrowed my opening to a handful of questions that consistently surface insight.</p><div class="post-foot"><span>6 min read</span><span>↗</span></div></div></a>
+      <a href="blog-single.html" class="post fu"><div class="post-visual bg-4"><span class="post-visual-mark">Fi</span></div><div class="post-body"><div class="post-meta"><span class="post-cat">Tools</span><span>·</span><span>Apr 15, 2026</span></div><h3 class="post-title">My Figma file structure for design systems that scale</h3><p class="post-excerpt">A walkthrough of the hierarchy that has kept my last three design systems organised.</p><div class="post-foot"><span>10 min read</span><span>↗</span></div></div></a>
+      <a href="blog-single.html" class="post fu"><div class="post-visual bg-5"><span class="post-visual-mark">Cr</span></div><div class="post-body"><div class="post-meta"><span class="post-cat">Career</span><span>·</span><span>Mar 30, 2026</span></div><h3 class="post-title">What I look for when reviewing a senior UX portfolio</h3><p class="post-excerpt">Notes from the other side of the table — what separates a senior portfolio from a great mid-level one.</p><div class="post-foot"><span>9 min read</span><span>↗</span></div></div></a>
+      <a href="blog-single.html" class="post fu"><div class="post-visual bg-6"><span class="post-visual-mark">JM</span></div><div class="post-body"><div class="post-meta"><span class="post-cat">Process</span><span>·</span><span>Mar 12, 2026</span></div><h3 class="post-title">Journey maps that survive contact with engineering</h3><p class="post-excerpt">Why most journey maps die after the workshop — and a simple format change that keeps mine alive.</p><div class="post-foot"><span>7 min read</span><span>↗</span></div></div></a>
+      <a href="blog-single.html" class="post fu"><div class="post-visual bg-7"><span class="post-visual-mark">Ps</span></div><div class="post-body"><div class="post-meta"><span class="post-cat">UX Research</span><span>·</span><span>Feb 22, 2026</span></div><h3 class="post-title">Personas are not the problem — your synthesis is</h3><p class="post-excerpt">The criticism of personas is mostly aimed at how they're made, not what they're for. A defence of the format.</p><div class="post-foot"><span>11 min read</span><span>↗</span></div></div></a>
+      <a href="blog-single.html" class="post fu"><div class="post-visual bg-8"><span class="post-visual-mark">St</span></div><div class="post-body"><div class="post-meta"><span class="post-cat">Service Design</span><span>·</span><span>Feb 04, 2026</span></div><h3 class="post-title">Stakeholder maps: the most under-used tool in service design</h3><p class="post-excerpt">A quick guide to mapping power dynamics before you start designing.</p><div class="post-foot"><span>6 min read</span><span>↗</span></div></div></a>
+      <a href="blog-single.html" class="post fu"><div class="post-visual bg-1"><span class="post-visual-mark">Fa</span></div><div class="post-body"><div class="post-meta"><span class="post-cat">Process</span><span>·</span><span>Jan 18, 2026</span></div><h3 class="post-title">Facilitation, not presentation — workshops that produce real outcomes</h3><p class="post-excerpt">The shift from "showing my work" to "guiding the group to insight" is the biggest skill I've developed.</p><div class="post-foot"><span>13 min read</span><span>↗</span></div></div></a>
+    </div>
+
+    <div class="newsletter fu">
+      <div class="newsletter-inner">
+        <h2 class="newsletter-h">Get new essays in your inbox.</h2>
+        <p class="newsletter-sub">One thoughtful piece on UX and service design every two weeks. No fluff, no spam, easy to unsubscribe.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed ✓';">
+          <input type="email" class="newsletter-input" placeholder="you@email.com" required>
+          <button type="submit" class="newsletter-btn">Subscribe →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Aloden — Alex Oden</span>
+  <span><a href="index.html">Home</a> · <a href="work.html">Work</a> · <a href="blog.html">Blog</a> · <a href="resume.html">Résumé</a></span>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

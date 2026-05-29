@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why your design research synthesis takes three times longer than it should — Aloden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+/* ===== PAGE-SPECIFIC: blog-single.html ===== */
+.progress{position:fixed;top:var(--nh);left:0;right:0;height:2px;z-index:99;background:transparent}
+.progress-fill{height:100%;background:var(--o-grad);width:0;transition:width .1s ease;box-shadow:0 0 8px rgba(255,138,61,.6)}
+.breadcrumb{padding:calc(var(--nh) + 2.5rem) 0 0;font-size:.8rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--tm);text-decoration:none;transition:color .2s}
+.breadcrumb a:hover{color:var(--o2)}
+.breadcrumb .sep{opacity:.4}
+.post-header{padding:2.5rem 0 3.5rem}
+.post-cat{display:inline-flex;align-items:center;gap:.5rem;color:var(--o2);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-bottom:1.25rem;background:var(--o-soft);padding:.35rem .8rem;border-radius:99px;border:1px solid var(--o-border)}
+.post-title{font-family:var(--fd);font-weight:400;line-height:1.06;letter-spacing:-.02em;font-size:clamp(2.25rem,5vw,4rem);margin-bottom:1.75rem}
+.post-title em{font-style:italic}
+.post-lede{font-size:clamp(1.1rem,1.5vw,1.25rem);color:var(--tm);line-height:1.6;margin-bottom:2.5rem;font-weight:300}
+.post-byline{display:flex;align-items:center;gap:1.25rem;padding:1.5rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.post-author{display:flex;align-items:center;gap:.75rem}
+.post-avatar{width:42px;height:42px;border-radius:50%;background:var(--o-grad);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;font-weight:600}
+.post-author-info{display:flex;flex-direction:column;gap:.15rem}
+.post-author-name{font-size:.875rem;color:var(--t);font-weight:500}
+.post-author-role{font-size:.75rem;color:var(--ts)}
+.post-byline-meta{display:flex;align-items:center;gap:.75rem;font-size:.78rem;color:var(--ts);margin-left:auto;flex-wrap:wrap}
+.post-byline-meta .sep{opacity:.4}
+.post-cover{margin:0 auto 4rem;max-width:1180px;padding:0 clamp(1.5rem,4vw,3rem)}
+.post-cover-img{aspect-ratio:21/9;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#FF5722,#FF8A3D 60%,#FFB366);position:relative;display:flex;align-items:center;justify-content:center}
+.post-cover-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.2),transparent 60%)}
+.post-cover-mark{font-family:var(--fd);font-size:clamp(6rem,12vw,10rem);font-style:italic;color:rgba(255,255,255,.96);line-height:1;letter-spacing:-.03em;position:relative;z-index:1}
+.article{padding-bottom:5rem;font-size:1.0625rem;line-height:1.8;color:var(--tm)}
+.article > * + *{margin-top:1.5rem}
+.article h2{font-family:var(--fd);font-weight:400;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.15;letter-spacing:-.02em;color:var(--t);margin-top:3.5rem;margin-bottom:1rem}
+.article h2 em{font-style:italic}
+.article h3{font-family:var(--fd);font-weight:400;font-size:clamp(1.35rem,2vw,1.75rem);line-height:1.2;letter-spacing:-.015em;color:var(--t);margin-top:2.5rem;margin-bottom:.75rem}
+.article strong{color:var(--t);font-weight:500}
+.article em{font-style:italic;color:var(--o3)}
+.article a{color:var(--o2);text-decoration:none;border-bottom:1px solid var(--o-border);transition:color .2s,border-color .2s}
+.article a:hover{color:var(--o3);border-color:var(--o3)}
+.article ul,.article ol{padding-left:1.5rem}
+.article li{margin-bottom:.65rem;color:var(--tm)}
+.article li::marker{color:var(--o2)}
+.article blockquote{border-left:3px solid var(--o2);padding:0 0 0 1.75rem;margin:2.5rem 0;font-family:var(--fd);font-style:italic;font-size:1.5rem;line-height:1.4;color:var(--t);letter-spacing:-.01em}
+.article hr{border:none;border-top:1px solid var(--line);margin:3rem 0;position:relative;text-align:center}
+.article hr::after{content:'✦';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--bg);padding:0 1rem;color:var(--o2);font-size:.85rem}
+.callout{margin:2.5rem 0;padding:1.5rem 1.75rem;background:var(--o-soft);border:1px solid var(--o-border);border-radius:16px;font-size:.95rem;line-height:1.65;color:var(--t);position:relative}
+.callout strong{color:var(--o2)}
+.article-figure{margin:2.5rem 0}
+.article-figure-img{aspect-ratio:16/9;border-radius:16px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a1a,#2a2a2a)}
+.article-figure-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,138,61,.4),transparent 60%)}
+.article-figure-cap{padding:.85rem 0 0;font-size:.8rem;color:var(--ts);text-align:center;font-style:italic;font-family:var(--fd)}
+.post-tags{display:flex;flex-wrap:wrap;gap:.5rem;padding:2.5rem 0;border-top:1px solid var(--line)}
+.post-tag{font-size:.75rem;padding:.4rem .9rem;border-radius:99px;background:var(--bg2);border:1px solid var(--line);color:var(--tm);text-decoration:none;transition:all .25s}
+.post-tag:hover{border-color:var(--o-border);color:var(--o2);background:var(--o-soft)}
+.share{display:flex;align-items:center;gap:1rem;padding:2rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.share-lbl{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ts);font-weight:500}
+.share-buttons{display:flex;gap:.5rem;flex-wrap:wrap}
+.share-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1rem;border-radius:99px;background:var(--bg2);border:1px solid var(--line);color:var(--tm);font-size:.78rem;text-decoration:none;cursor:pointer;transition:all .25s;font-family:inherit}
+.share-btn:hover{border-color:var(--o-border);color:var(--o2);background:var(--o-soft)}
+.author-card{margin-top:3rem;padding:2rem;background:var(--bg2);border:1px solid var(--line);border-radius:20px;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.author-card-avatar{width:64px;height:64px;border-radius:50%;background:var(--o-grad);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;font-weight:600;flex-shrink:0}
+.author-card-info{flex:1;min-width:200px}
+.author-card-name{font-family:var(--fd);font-size:1.4rem;font-weight:400;margin-bottom:.25rem;letter-spacing:-.01em}
+.author-card-bio{font-size:.85rem;color:var(--tm);line-height:1.55}
+.author-card-link{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.2rem;border-radius:99px;background:transparent;border:1px solid var(--line2);color:var(--t);text-decoration:none;font-size:.8rem;transition:all .25s}
+.author-card-link:hover{background:var(--o-soft);border-color:var(--o-border);color:var(--o2)}
+.related{padding:5rem 0;background:var(--bg2);border-top:1px solid var(--line)}
+.related-h{font-family:var(--fd);font-size:clamp(1.75rem,3vw,2.25rem);font-weight:400;letter-spacing:-.015em;margin-bottom:2.5rem}
+.related-h em{font-style:italic}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.related-card{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .3s,transform .3s}
+.related-card:hover{border-color:var(--o-border);transform:translateY(-4px)}
+.related-visual{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative}
+.related-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(255,255,255,.15),transparent 60%)}
+.related-mark{font-family:var(--fd);font-size:3.5rem;font-style:italic;color:rgba(255,255,255,.95);position:relative;z-index:1;line-height:1}
+.r-bg-1{background:linear-gradient(135deg,#FF8A3D,#FFB366)}
+.r-bg-2{background:linear-gradient(135deg,#7B4FFF,#FF5722)}
+.r-bg-3{background:linear-gradient(135deg,#FF5722,#FF8A3D)}
+.related-body{padding:1.25rem 1.5rem 1.5rem;flex:1;display:flex;flex-direction:column;gap:.5rem}
+.related-meta{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ts)}
+.related-cat{color:var(--o2);font-weight:500}
+.related-title{font-family:var(--fd);font-size:1.15rem;font-weight:400;line-height:1.25;letter-spacing:-.005em;color:var(--t)}
+@media(max-width:840px){
+  .related-grid{grid-template-columns:1fr}
+  .post-byline-meta{margin-left:0;width:100%}
+}
+</style>
+</head>
+<body>
+
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<nav id="nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><span class="logo-dot"></span>Aloden</a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="resume.html">Résumé</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="index.html#contact" class="nav-cta">Let's talk →</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-menu-links" aria-label="Mobile navigation menu">
+    <a href="work.html"><span class="num">01</span>Work</a>
+    <a href="index.html#services"><span class="num">02</span>Services</a>
+    <a href="blog.html"><span class="num">03</span>Blog</a>
+    <a href="resume.html"><span class="num">04</span>Résumé</a>
+  </nav>
+  <div class="mobile-menu-foot">
+    <a href="index.html#contact" class="mobile-menu-cta">Let's talk →</a>
+    <div class="mobile-menu-social"><a href="#">LinkedIn</a><a href="#">Dribbble</a><a href="mailto:hello@aloden.nl">Email</a></div>
+  </div>
+</div>
+
+<div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="wrap-narrow">
+  <div class="breadcrumb fu">
+    <a href="index.html">Home</a><span class="sep">/</span><a href="blog.html">Blog</a><span class="sep">/</span><span>Why your design research synthesis takes three times longer than it should</span>
+  </div>
+</div>
+
+<header class="post-header">
+  <div class="wrap-narrow">
+    <div class="post-cat fu">Process</div>
+    <h1 class="post-title fu" style="transition-delay:.06s">Why your design research synthesis takes <em class="grad">three times longer</em> than it should</h1>
+    <p class="post-lede fu" style="transition-delay:.12s">After running 22 user interviews on my last project, I learned a painful lesson about when to start tagging. A practical guide to front-loading your synthesis frameworks before the first session — and the three mistakes I keep making.</p>
+    <div class="post-byline fu" style="transition-delay:.18s">
+      <div class="post-author">
+        <div class="post-avatar">AO</div>
+        <div class="post-author-info"><div class="post-author-name">Alex Oden</div><div class="post-author-role">UX & Service Designer</div></div>
+      </div>
+      <div class="post-byline-meta"><span>May 24, 2026</span><span class="sep">·</span><span>12 min read</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="post-cover fu">
+  <div class="post-cover-img"><span class="post-cover-mark">Aa</span></div>
+</div>
+
+<article class="article">
+  <div class="wrap-narrow">
+    <p>I've been doing user research professionally for around five years now. In that time I've sat through hundreds of interviews and built dozens of synthesis decks. And on every single project, I've underestimated how long synthesis would take. <strong>Every. Single. Time.</strong></p>
+    <p>On my most recent project — a SaaS onboarding redesign — I budgeted three days for synthesis after 22 user interviews. It took nine. The decks were excellent, the insights sharp, the stakeholders thrilled. But I burned through nearly two weeks of margin I didn't have.</p>
+    <p>This essay is the post-mortem I wrote for myself. If you've ever stared at a wall of sticky notes wondering where to start, this is for you.</p>
+
+    <hr>
+
+    <h2>The mistake we all make: tagging starts <em>after</em> the last interview</h2>
+    <p>Here's the pattern I keep falling into. I script my guide, schedule sessions, dive in. I take notes during each session. After the last interview, <em>then</em> I sit down to make sense of it all.</p>
+    <p>The problem: by interview 22, I've forgotten the nuance of interview 1. I end up re-listening to recordings, second-guessing my tags, and reconstructing a coherent story from fragments. That reconstruction is what takes so long.</p>
+
+    <div class="callout"><strong>The fix isn't doing synthesis faster.</strong> The fix is starting synthesis before you finish data collection. Tag in real time. Build your framework as you learn.</div>
+
+    <p>This sounds obvious. And yet I keep not doing it, because in the moment, in-the-moment tagging feels like premature structure. That instinct is exactly backwards.</p>
+
+    <h2>Three mistakes I keep making</h2>
+
+    <h3>1. I confuse "themes" with "categories"</h3>
+    <p>Themes are interpretations. Categories are buckets. Categories should be created up front and stay stable: <em>which feature, which segment, which task</em>. Themes emerge later and should be revised constantly.</p>
+
+    <div class="article-figure">
+      <div class="article-figure-img">
+        <div class="viz-mockup" style="top:14%;left:8%;width:38%;height:70%;"><div style="font-weight:500;font-size:.7rem">Categories (stable)</div><div class="viz-bar fill" style="width:80%"></div><div class="viz-bar" style="width:60%"></div></div>
+        <div class="viz-mockup" style="top:14%;right:8%;width:38%;height:70%;"><div style="font-weight:500;font-size:.7rem;color:#FF8A3D">Themes (emergent)</div><div class="viz-bar" style="width:55%"></div><div class="viz-bar fill" style="width:75%"></div></div>
+      </div>
+      <div class="article-figure-cap">Two-layer tagging: stable categories on the left, emergent themes on the right</div>
+    </div>
+
+    <h3>2. I delay defining "what counts as a finding"</h3>
+    <p>What constitutes a <em>finding</em> worth writing up? My current rule: <strong>a finding requires evidence from at least three participants from at least two segments</strong>. Anything below that becomes a "watch item".</p>
+
+    <h3>3. I skip the "what would change my mind?" question</h3>
+    <p>For every emerging finding, what evidence would falsify it? If you can't answer that, you don't have a finding — you have a guess.</p>
+
+    <blockquote>"The plural of anecdote is not data, but data is not insight either. Insight is a pattern you can defend, that survives serious attempts to disprove it."</blockquote>
+
+    <hr>
+
+    <h2>A simple framework that works</h2>
+    <ol>
+      <li><strong>Before the first interview:</strong> define categories, set the bar for a finding, draft an initial theme list.</li>
+      <li><strong>After every interview:</strong> tag against categories in real time. Revise themes within 24 hours.</li>
+      <li><strong>At the midpoint:</strong> review themes with the team. Kill the ones with no evidence.</li>
+      <li><strong>After the last interview:</strong> challenge every finding with "what would change my mind?".</li>
+      <li><strong>Synthesis is done when:</strong> you can summarise each finding in one sentence with three+ supporting participants.</li>
+    </ol>
+
+    <h2>What I'd tell my <em>past self</em></h2>
+    <p>If I could go back five years, I'd say: <strong>your interview notes are not data.</strong> They're raw material. The data emerges when you process those notes through categorisation, theme-finding, and falsification.</p>
+    <p>Front-load the structure. Tag as you go. Set your evidence bar before you collect evidence. Your future self will thank you.</p>
+
+    <p style="margin-top:3rem;color:var(--ts);font-style:italic;font-family:var(--fd);font-size:1.1rem">— Alex Oden, May 24, 2026</p>
+
+    <div class="post-tags">
+      <a href="#" class="post-tag">UX Research</a><a href="#" class="post-tag">Process</a><a href="#" class="post-tag">Synthesis</a><a href="#" class="post-tag">Methodology</a>
+    </div>
+
+    <div class="share">
+      <div class="share-lbl">Share</div>
+      <div class="share-buttons">
+        <button class="share-btn">𝕏 Twitter</button>
+        <button class="share-btn">in LinkedIn</button>
+        <button class="share-btn">✉ Email</button>
+        <button class="share-btn" onclick="navigator.clipboard?.writeText(location.href);this.textContent='✓ Copied'">⎘ Copy link</button>
+      </div>
+    </div>
+
+    <div class="author-card">
+      <div class="author-card-avatar">AO</div>
+      <div class="author-card-info">
+        <div class="author-card-name">Alex Oden</div>
+        <div class="author-card-bio">UX & Service Designer based in the Netherlands. I write about research, process, and the slow craft of building things that last.</div>
+      </div>
+      <a href="index.html" class="author-card-link">View profile →</a>
+    </div>
+  </div>
+</article>
+
+<section class="related">
+  <div class="wrap-mid">
+    <h2 class="related-h fu">Keep <em class="grad">reading</em>.</h2>
+    <div class="related-grid">
+      <a href="blog-single.html" class="related-card fu"><div class="related-visual r-bg-1"><span class="related-mark">UX</span></div><div class="related-body"><div class="related-meta"><span class="related-cat">UX Research</span> · Apr 28, 2026</div><div class="related-title">The five questions I ask in every user interview</div></div></a>
+      <a href="blog-single.html" class="related-card fu" style="transition-delay:.06s"><div class="related-visual r-bg-2"><span class="related-mark">Ps</span></div><div class="related-body"><div class="related-meta"><span class="related-cat">UX Research</span> · Feb 22, 2026</div><div class="related-title">Personas are not the problem — your synthesis is</div></div></a>
+      <a href="blog-single.html" class="related-card fu" style="transition-delay:.12s"><div class="related-visual r-bg-3"><span class="related-mark">Fa</span></div><div class="related-body"><div class="related-meta"><span class="related-cat">Process</span> · Jan 18, 2026</div><div class="related-title">Facilitation, not presentation — workshops that produce real outcomes</div></div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Aloden — Alex Oden</span>
+  <span><a href="index.html">Home</a> · <a href="work.html">Work</a> · <a href="blog.html">Blog</a> · <a href="resume.html">Résumé</a></span>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
