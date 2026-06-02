@@ -1,0 +1,28 @@
+# ── Aloden access gate (Plan B) ────────────────────────────────
+# Everything is password-protected by default. The public exceptions
+# below let anyone see the coming-soon landing page + download the
+# résumé, while the real portfolio (index.html, work.html, etc.)
+# requires the password.
+#
+# The .htpasswd is created by cPanel → Directory Privacy and lives
+# OUTSIDE the web root, so the rsync --delete deploy never touches it.
+# This .htaccess is committed to git, so deploys preserve it.
+
+AuthType Basic
+AuthName "Aloden — enter password to continue"
+# Path confirmed from the cPanel-generated .htaccess (Directory Privacy).
+AuthUserFile "/home/alexoden/.htpasswds/staging.alexoden.com/passwd"
+Require valid-user
+
+# Public visitors land on the coming-soon page without a password.
+DirectoryIndex coming-soon.html index.html
+
+# Public exceptions: the landing page itself + its downloadable résumé.
+<FilesMatch "^(coming-soon\.html|AlexOden_Resume_ENG_Dark\.pdf)$">
+  Require all granted
+</FilesMatch>
+
+# Keep the staging site out of search engines while it is gated.
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>

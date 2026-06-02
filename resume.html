@@ -98,94 +98,98 @@
   .cert-grid{grid-template-columns:1fr}
 }
 
-/* ===== PRINT / PDF EXPORT — on-brand template ===== */
+/* ===== PRINT / PDF EXPORT — modern, professional, dense ===== */
 @media print{
   *,*::before,*::after{background:transparent !important;color:#1a1a1a !important;box-shadow:none !important;text-shadow:none !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  @page{margin:13mm 13mm;size:A4}
-  html,body{background:#fff !important;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:10pt;line-height:1.45;color:#1a1a1a;overflow:visible}
+  @page{margin:11mm 12mm;size:A4}
+  html,body{background:#fff !important;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:9.5pt;line-height:1.4;color:#1a1a1a;overflow:visible}
   nav,.glow,footer,.resume-cta,.dl-actions,.breadcrumb,.mobile-menu,.hamburger{display:none !important}
   .fu{opacity:1 !important;transform:none !important}
   .wrap{max-width:100%;padding:0}
 
-  /* ---- Header / hero ---- */
-  .resume-hero{position:relative;padding:0 0 8pt}
-  .resume-hero::before{content:'';display:block;height:4pt;width:100%;background:linear-gradient(90deg,#FF5722 0%,#FF8A3D 55%,#FFB366 100%) !important;border-radius:2pt;margin-bottom:11pt}
+  /* ---- Header ---- */
+  .resume-hero{position:relative;padding:0 0 7pt}
+  .resume-hero::before{content:'';display:block;height:3.5pt;width:100%;background:linear-gradient(90deg,#FF5722 0%,#FF8A3D 55%,#FFB366 100%) !important;border-radius:2pt;margin-bottom:9pt}
   .resume-hero-grid{display:block}
-  .label{display:inline-flex !important;align-items:center;gap:4pt;font-size:7pt !important;letter-spacing:.12em;text-transform:uppercase;color:#FF5722 !important;background:#fff3ec !important;border:1px solid #ffd9c2 !important;padding:2pt 7pt !important;border-radius:99px;margin-bottom:7pt;font-weight:500}
+  .label{display:inline-flex !important;align-items:center;gap:4pt;font-size:6.5pt !important;letter-spacing:.12em;text-transform:uppercase;color:#FF5722 !important;background:#fff3ec !important;border:1px solid #ffd9c2 !important;padding:1.5pt 6pt !important;border-radius:99px;margin-bottom:5pt;font-weight:600}
   .label .dot{width:3pt;height:3pt;border-radius:50%;background:#FF5722 !important}
-  .resume-name{font-family:'Instrument Serif',Georgia,serif !important;font-size:27pt !important;color:#141414 !important;line-height:1.04;margin-bottom:3pt;letter-spacing:-.01em}
+  .resume-name{font-family:'Instrument Serif',Georgia,serif !important;font-size:25pt !important;color:#141414 !important;line-height:1.02;margin-bottom:2pt;letter-spacing:-.01em}
   .resume-name em,.resume-name .grad{color:#FF5722 !important;-webkit-text-fill-color:#FF5722 !important;background:none !important;font-style:italic}
-  .resume-role{font-size:10.5pt !important;color:#555 !important;margin-bottom:7pt;line-height:1.3}
-  .resume-role .dot{display:inline-block;width:3pt;height:3pt;border-radius:50%;background:#FF5722 !important;vertical-align:middle;margin:0 5pt}
-  .resume-contact{display:flex !important;flex-wrap:wrap;gap:5pt 16pt;font-size:8.5pt;color:#555 !important;border-top:1px solid #e8e8e8;padding-top:8pt;margin-top:2pt}
+  .resume-role{font-size:9.5pt !important;color:#555 !important;margin-bottom:6pt;line-height:1.25}
+  .resume-role .dot{display:inline-block;width:2.5pt;height:2.5pt;border-radius:50%;background:#FF5722 !important;vertical-align:middle;margin:0 4pt}
+  .resume-contact{display:flex !important;flex-wrap:wrap;gap:3pt 14pt;font-size:8pt;color:#555 !important;border-top:1px solid #e8e8e8;padding-top:6pt}
   .resume-contact a{color:#555 !important}
-  .resume-contact .ico{color:#FF5722 !important;font-weight:600}
+  .resume-contact .ico{color:#FF5722 !important;font-weight:700}
 
   /* ---- Meta strip ---- */
-  .resume-meta{display:grid !important;grid-template-columns:repeat(4,1fr);gap:12pt;border:none !important;background:transparent !important;border-radius:0;padding:9pt 0 0;margin:9pt 0 0;border-top:1px solid #e8e8e8 !important}
+  .resume-meta{display:grid !important;grid-template-columns:repeat(4,1fr);gap:10pt;border:none !important;background:transparent !important;border-radius:0;padding:7pt 0 0;margin:7pt 0 0;border-top:1px solid #e8e8e8 !important}
   .resume-meta-cell{padding:0 !important;border:none !important;background:transparent !important}
-  .resume-meta-lbl{font-size:6.5pt !important;color:#999 !important;letter-spacing:.12em;margin-bottom:3pt;text-transform:uppercase}
-  .resume-meta-lbl::before{background:#FF5722 !important;width:3pt;height:3pt}
-  .resume-meta-val{font-size:9pt !important;color:#1a1a1a !important;line-height:1.3;font-weight:500}
+  .resume-meta-lbl{font-size:6pt !important;color:#999 !important;letter-spacing:.12em;margin-bottom:2pt;text-transform:uppercase}
+  .resume-meta-lbl::before{background:#FF5722 !important;width:2.5pt;height:2.5pt}
+  .resume-meta-val{font-size:8.5pt !important;color:#1a1a1a !important;line-height:1.25;font-weight:600}
   .resume-meta-val.avail{color:#2a8a2a !important}
-  .av-pulse{background:#2a8a2a !important;animation:none !important;box-shadow:none !important;width:4pt;height:4pt}
+  .av-pulse{background:#2a8a2a !important;animation:none !important;box-shadow:none !important;width:3.5pt;height:3.5pt}
 
   /* ---- Summary ---- */
-  .resume-summary{padding:10pt 0;border-top:1px solid #e8e8e8 !important;border-bottom:1px solid #e8e8e8 !important;margin-top:11pt}
-  .summary-grid{grid-template-columns:64pt 1fr;gap:16pt}
-  .summary-num{font-family:'Instrument Serif',Georgia,serif !important;font-size:15pt !important;color:#FF5722 !important;font-style:italic}
-  .summary-num-lbl{font-size:6.5pt !important;color:#999 !important;letter-spacing:.12em}
-  .summary-text{font-size:9.5pt !important;line-height:1.5;color:#333 !important;max-width:100%}
+  .resume-summary{padding:8pt 0;border-top:1px solid #e8e8e8 !important;border-bottom:1px solid #e8e8e8 !important;margin-top:8pt}
+  .summary-grid{grid-template-columns:56pt 1fr;gap:14pt}
+  .summary-num{font-family:'Instrument Serif',Georgia,serif !important;font-size:13pt !important;color:#FF5722 !important;font-style:italic}
+  .summary-num-lbl{font-size:6pt !important;color:#999 !important;letter-spacing:.12em;text-transform:uppercase}
+  .summary-text{font-size:9pt !important;line-height:1.45;color:#333 !important;max-width:100%}
+  .summary-text p{margin-top:3pt}
+  .summary-text p:first-child{margin-top:0}
   .summary-text strong{color:#1a1a1a !important;font-weight:600}
   .summary-text em{font-style:italic;color:#FF5722 !important}
 
-  /* ---- Section grid ---- */
-  .resume-content{grid-template-columns:84pt 1fr;gap:16pt;padding:11pt 0 0}
-  .section-label{font-family:'Instrument Serif',Georgia,serif !important;font-size:15pt !important;color:#FF5722 !important;font-style:italic;position:static !important}
-  .section-label-sub{font-size:6.5pt !important;color:#999 !important;letter-spacing:.12em;margin-top:1pt;text-transform:uppercase}
-  .section-block{margin-bottom:14pt;page-break-inside:avoid}
+  /* ---- Sections: full-width header + flowing content (no sidebar, no orphan pages) ---- */
+  .resume-content{display:block !important;padding:9pt 0 0 !important}
+  .section-block{display:block;margin-bottom:9pt;page-break-inside:auto;break-inside:auto}
+  .section-block:last-child{margin-bottom:0}
+  .section-label{display:flex !important;align-items:baseline;gap:7pt;position:static !important;font-family:'Instrument Serif',Georgia,serif !important;font-size:13pt !important;color:#FF5722 !important;font-style:italic;line-height:1;border-bottom:1.2pt solid #ececec;padding-bottom:3.5pt;margin-bottom:8pt}
+  .section-label-sub{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif !important;font-style:normal;font-size:7.5pt !important;color:#333 !important;letter-spacing:.14em;text-transform:uppercase;margin:0 !important;font-weight:600}
 
   /* ---- Experience ---- */
-  .exp{padding-left:14pt;border-left:1.5pt solid #eee !important;padding-bottom:11pt}
-  .exp::before{background:#FF5722 !important;width:7pt;height:7pt;box-shadow:0 0 0 2pt #fff !important;left:-4.5pt}
-  .exp-period{font-size:6.5pt !important;color:#FF5722 !important;background:#fff3ec !important;border:1px solid #ffd9c2 !important;padding:1.5pt 6pt;border-radius:99px;margin-bottom:4pt;letter-spacing:.05em;text-transform:uppercase}
-  .exp-role{font-family:'Instrument Serif',Georgia,serif !important;font-size:13pt !important;color:#141414 !important;margin-bottom:1pt;line-height:1.15}
-  .exp-org{font-size:9pt !important;color:#666 !important;margin-bottom:4pt}
+  .exp{padding-left:13pt;border-left:1.2pt solid #eee !important;padding-bottom:8pt;page-break-inside:avoid;break-inside:avoid}
+  .exp:last-child{padding-bottom:0}
+  .exp::before{background:#FF5722 !important;width:6pt;height:6pt;box-shadow:0 0 0 2pt #fff !important;left:-3.5pt;top:1pt}
+  .exp-period{display:inline-block;font-size:6pt !important;color:#FF5722 !important;background:#fff3ec !important;border:1px solid #ffd9c2 !important;padding:1pt 5pt;border-radius:99px;margin-bottom:3pt;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+  .exp-role{font-family:'Instrument Serif',Georgia,serif !important;font-size:12.5pt !important;color:#141414 !important;margin-bottom:0;line-height:1.1}
+  .exp-org{font-size:8.5pt !important;color:#666 !important;margin-bottom:3pt}
   .exp-org-sep{color:#FF8A3D !important}
-  .exp-desc{font-size:9pt !important;color:#444 !important;margin-bottom:4pt;line-height:1.45}
-  .exp-list{margin-top:3pt;padding-left:10pt}
-  .exp-list li{font-size:8.5pt !important;color:#444 !important;padding-bottom:2pt;line-height:1.4;page-break-inside:avoid}
-  .exp-list li::before{background:#FF5722 !important;opacity:.8;width:3pt;height:3pt;top:5pt;left:-9pt}
+  .exp-desc{font-size:8.5pt !important;color:#444 !important;margin-bottom:3pt;line-height:1.4}
+  .exp-list{margin-top:2pt;padding-left:9pt}
+  .exp-list li{font-size:8pt !important;color:#444 !important;padding-bottom:1.5pt;line-height:1.35}
+  .exp-list li::before{background:#FF5722 !important;opacity:.85;width:2.5pt;height:2.5pt;top:4.5pt;left:-9pt}
   .exp-list li strong{color:#1a1a1a !important}
-  .exp-tags{display:flex !important;flex-wrap:wrap;gap:3pt;margin-top:5pt}
-  .exp-tag{font-size:7pt !important;padding:1pt 6pt;border-radius:99px;background:#fafafa !important;color:#555 !important;border:1px solid #e8e8e8 !important}
+  .exp-tags{display:flex !important;flex-wrap:wrap;gap:3pt;margin-top:4pt}
+  .exp-tag{font-size:6.5pt !important;padding:1pt 5pt;border-radius:99px;background:#fafafa !important;color:#555 !important;border:1px solid #e8e8e8 !important}
 
   /* ---- Certifications ---- */
-  .cert-grid{display:grid !important;grid-template-columns:1fr 1fr;gap:7pt}
-  .cert{padding:8pt 10pt !important;background:#fafafa !important;border:1px solid #ececec !important;border-radius:6pt;page-break-inside:avoid}
-  .cert-year{font-size:6.5pt !important;color:#FF5722 !important;letter-spacing:.08em;margin-bottom:2pt;text-transform:uppercase}
-  .cert-name{font-family:'Instrument Serif',Georgia,serif !important;font-size:11pt !important;color:#1a1a1a !important;margin-bottom:2pt}
-  .cert-org{font-size:8pt !important;color:#666 !important;line-height:1.35}
+  .cert-grid{display:grid !important;grid-template-columns:1fr 1fr;gap:6pt}
+  .cert{padding:7pt 9pt !important;background:#fafafa !important;border:1px solid #ececec !important;border-radius:5pt;page-break-inside:avoid;break-inside:avoid}
+  .cert-year{font-size:6pt !important;color:#FF5722 !important;letter-spacing:.08em;margin-bottom:1.5pt;text-transform:uppercase;font-weight:600}
+  .cert-name{font-family:'Instrument Serif',Georgia,serif !important;font-size:10.5pt !important;color:#1a1a1a !important;margin-bottom:1.5pt;line-height:1.15}
+  .cert-org{font-size:7.5pt !important;color:#666 !important;line-height:1.3}
 
   /* ---- Skills ---- */
-  .skills-group{margin-bottom:7pt;page-break-inside:avoid}
-  .skills-group-title{font-size:6.5pt !important;color:#999 !important;letter-spacing:.12em;margin-bottom:3pt;text-transform:uppercase}
-  .skills-group-title .dot{background:#FF5722 !important;width:3pt;height:3pt}
+  .skills-group{margin-bottom:6pt;page-break-inside:avoid;break-inside:avoid}
+  .skills-group-title{font-size:6pt !important;color:#999 !important;letter-spacing:.12em;margin-bottom:3pt;text-transform:uppercase;font-weight:600}
+  .skills-group-title .dot{background:#FF5722 !important;width:2.5pt;height:2.5pt}
   .skill-cloud{gap:3pt}
-  .skill{font-size:7.5pt !important;padding:1.5pt 7pt;background:#fafafa !important;border:1px solid #ececec !important;color:#444 !important;border-radius:99px}
+  .skill{font-size:7pt !important;padding:1pt 6pt;background:#fafafa !important;border:1px solid #ececec !important;color:#444 !important;border-radius:99px}
   .skill.primary{background:#fff3ec !important;color:#FF5722 !important;border-color:#ffd9c2 !important}
 
   /* ---- Languages (no progress bars) ---- */
-  .lang{display:flex !important;align-items:baseline;gap:8pt;padding:3.5pt 0;border-bottom:1px solid #eee !important;page-break-inside:avoid}
-  .lang-name{font-size:9pt !important;color:#1a1a1a !important;font-weight:600;flex-shrink:0}
+  .lang{display:flex !important;align-items:baseline;gap:8pt;padding:3pt 0;border-bottom:1px solid #eee !important;page-break-inside:avoid}
+  .lang-name{font-size:8.5pt !important;color:#1a1a1a !important;font-weight:600;flex-shrink:0}
   .lang-dots{flex:1;border-bottom:1px dotted #ccc !important;transform:translateY(-2pt);opacity:1}
-  .lang-level{font-size:7.5pt !important;color:#FF5722 !important;letter-spacing:.04em;text-transform:uppercase;flex-shrink:0;font-weight:500}
+  .lang-level{font-size:7pt !important;color:#FF5722 !important;letter-spacing:.04em;text-transform:uppercase;flex-shrink:0;font-weight:600}
 
   /* ---- Recognition ---- */
-  .award{padding:4pt 0;border-bottom:1px solid #eee !important;gap:10pt;page-break-inside:avoid}
-  .award-year{font-family:'Instrument Serif',Georgia,serif !important;font-size:12pt !important;color:#FF5722 !important;font-style:italic;min-width:38pt}
-  .award-title{font-size:9pt !important;color:#1a1a1a !important;margin-bottom:1pt;line-height:1.3}
-  .award-org{font-size:7.5pt !important;color:#666 !important}
+  .award{padding:3.5pt 0;border-bottom:1px solid #eee !important;gap:10pt;page-break-inside:avoid}
+  .award-year{font-family:'Instrument Serif',Georgia,serif !important;font-size:11pt !important;color:#FF5722 !important;font-style:italic;min-width:34pt}
+  .award-title{font-size:8.5pt !important;color:#1a1a1a !important;margin-bottom:0;line-height:1.25}
+  .award-org{font-size:7pt !important;color:#666 !important}
 
   a{text-decoration:none !important}
 }
@@ -245,7 +249,6 @@
       </div>
       <div class="dl-actions fu" style="transition-delay:.24s">
         <button class="btn-p" onclick="window.print()"><span>Download PDF</span><span class="arr">↓</span></button>
-        <button class="btn-s" onclick="window.print()"><span>Print</span></button>
       </div>
     </div>
     <div class="resume-meta fu" style="transition-delay:.3s">
