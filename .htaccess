@@ -1,8 +1,9 @@
 # ── Aloden access gate (Plan B) ────────────────────────────────
-# Everything is password-protected by default. The exceptions below keep
-# the public landing page working: the coming-soon page itself, the
-# downloadable résumé, and all static assets (css/js/img/fonts) so the
-# page renders for visitors who are NOT logged in.
+# NOTE: we do NOT use a site-wide "Require valid-user" here. On this
+# LiteSpeed server, a blanket rule + <FilesMatch> "Require all granted"
+# exceptions does not work — the blanket wins and locks the landing page
+# too. So instead we leave everything PUBLIC by default and put the
+# password ONLY on the real portfolio pages below.
 #
 # The .htpasswd is created by cPanel → Directory Privacy and lives OUTSIDE
 # the web root, so the rsync --delete deploy never touches it. This file is
@@ -13,21 +14,14 @@ AuthName "Aloden — enter password to continue"
 # Path confirmed from the cPanel-generated .htaccess (Directory Privacy).
 AuthUserFile "/home/alexoden/.htpasswds/staging.alexoden.com/passwd"
 
-# Protect the whole site by default.
-Require valid-user
-
-# Public visitors land on the coming-soon page (no password).
+# "/" serves the public coming-soon landing.
 DirectoryIndex coming-soon.html index.html
 
-# Public page(s): the landing screen + the downloadable résumé.
-<FilesMatch "^(coming-soon\.html|AlexOden_Resume_ENG_Dark\.pdf)$">
-  Require all granted
-</FilesMatch>
-
-# Public static assets — matched by extension, anywhere in the site — so the
-# landing page renders with its CSS, fonts, JS and logo for logged-out users.
-<FilesMatch "\.(css|js|mjs|map|svg|png|jpe?g|gif|webp|avif|ico|woff2?|ttf|otf|eot)$">
-  Require all granted
+# Password-protect ONLY the portfolio pages. Everything else — the
+# coming-soon landing, /assets/, the résumé PDF — stays public.
+# If you add a new private page, add its filename to this list.
+<FilesMatch "^(index|blog|blog-single|resume|work|work-single)\.html$">
+  Require valid-user
 </FilesMatch>
 
 # Keep the staging site out of search engines while it is gated.
