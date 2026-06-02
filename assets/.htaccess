@@ -1,4 +1,0 @@
-# Shared assets (CSS / JS / logo) must stay public so the coming-soon
-# page renders correctly for visitors who don't have the password.
-# This overrides the "Require valid-user" inherited from the root .htaccess.
-Require all granted
