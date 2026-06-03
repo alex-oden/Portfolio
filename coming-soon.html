@@ -136,26 +136,37 @@ body{display:flex;flex-direction:column;min-height:100vh;min-height:100svh}
 </footer>
 
 <script>
-/* Rotating headline */
+/* Rotating headline — self-correcting (never stacks, even after tab throttling) */
 (function(){
   var wrap = document.querySelector('.cs-rotate');
   if(!wrap) return;
   var words = Array.prototype.slice.call(wrap.querySelectorAll('.cs-rotate-word'));
   if(words.length < 2) return;
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var i = 0;
-  setInterval(function(){
-    var cur = words[i];
-    i = (i + 1) % words.length;
-    var nxt = words[i];
-    cur.classList.remove('is-in');
-    cur.classList.add('is-out');
-    nxt.classList.remove('is-out');
-    requestAnimationFrame(function(){
-      requestAnimationFrame(function(){ nxt.classList.add('is-in'); });
-    });
-    setTimeout(function(){ cur.classList.remove('is-out'); }, 950);
-  }, 3200);
+
+  var cur = 0;
+
+  // Apply state directly: exactly one word "in", at most one "out", rest hidden.
+  function render(inIdx, outIdx){
+    for(var k = 0; k < words.length; k++){
+      words[k].classList.toggle('is-in', k === inIdx);
+      words[k].classList.toggle('is-out', k === outIdx);
+    }
+  }
+
+  function tick(){
+    var prev = cur;
+    cur = (cur + 1) % words.length;
+    render(cur, prev);
+  }
+
+  render(cur, -1);
+  setInterval(tick, 3200);
+
+  // Returning to the tab after throttling: snap to a clean single-word state.
+  document.addEventListener('visibilitychange', function(){
+    if(!document.hidden) render(cur, -1);
+  });
 })();
 
 (function(){
