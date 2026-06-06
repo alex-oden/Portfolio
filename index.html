@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <!-- SHARED STYLES -->
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/styles.css?v=2">
 <!-- SPLINE VIEWER -->
 <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.95/build/spline-viewer.js"></script>
 <style>
@@ -24,8 +24,8 @@
 @keyframes breathe{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.12);opacity:1}}
 .hero-3d spline-viewer{position:relative;width:100%;height:100%;display:block;background:transparent !important;z-index:1}
 
-.hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:3.5rem;width:100%;position:relative;box-sizing:border-box}
-.hero-meta-cell{position:relative;background:var(--bg);padding:1.65rem 1.85rem;overflow:hidden;transition:background .4s cubic-bezier(.16,1,.3,1)}
+.hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--glass-border);border-radius:20px;overflow:hidden;margin-top:3.5rem;width:100%;position:relative;box-sizing:border-box;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:inset 0 1px 0 rgba(255,255,255,0.08)}
+.hero-meta-cell{position:relative;background:var(--glass);padding:1.65rem 1.85rem;overflow:hidden;transition:background .4s cubic-bezier(.16,1,.3,1)}
 .hero-meta-cell::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 120%,var(--o-soft2) 0%,transparent 60%);opacity:0;transition:opacity .5s ease;pointer-events:none}
 .hero-meta-cell:hover::before{opacity:1}
 .hero-meta-cell::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--o-grad);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.16,1,.3,1)}
@@ -39,9 +39,9 @@
 .av-pulse{width:7px;height:7px;background:#5CB85C;border-radius:50%;position:relative;box-shadow:0 0 0 0 rgba(92,184,92,.6);animation:pulse 2s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(92,184,92,.6)}70%{box-shadow:0 0 0 8px rgba(92,184,92,0)}100%{box-shadow:0 0 0 0 rgba(92,184,92,0)}}
 
-#services{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#services{background:var(--glass-veil);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
-.svc{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:1.75rem 1.5rem;transition:border-color .3s,transform .3s}
+.svc{background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:20px;padding:1.75rem 1.5rem;transition:border-color .3s,transform .3s}
 .svc:hover{border-color:var(--o-border);transform:translateY(-3px)}
 .svc-icon{width:44px;height:44px;border-radius:12px;background:var(--o-soft);border:1px solid var(--o-border);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;color:var(--o2);font-size:1.2rem;font-weight:600}
 .svc-name{font-size:1.05rem;font-weight:500;margin-bottom:.5rem}
@@ -52,7 +52,7 @@
 .skg-title:first-child{margin-top:0}
 .skg-title .dot{width:5px;height:5px;border-radius:50%;background:var(--o-grad)}
 
-#resume{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#resume{background:var(--glass-veil);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .resume-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
 .resume-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
 .resume-col-title{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ts);margin-bottom:1.75rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
@@ -285,6 +285,7 @@
 </footer>
 
 <!-- SHARED SCRIPTS -->
+<script src="assets/js/wave-bg.js?v=2" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

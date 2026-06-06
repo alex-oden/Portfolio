@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/styles.css?v=2">
 <style>
 /* ===== PAGE-SPECIFIC: work.html ===== */
 .page-hero{padding:calc(var(--nh) + 5rem) 0 4rem;position:relative}
@@ -17,7 +17,7 @@
 .page-hero-meta-lbl{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ts);font-weight:500}
 .page-hero-meta-val .grad-num{font-family:var(--fd);font-size:1.4rem;font-weight:400}
 .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:3rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line)}
-.filter{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border-radius:99px;background:var(--bg2);border:1px solid var(--line);color:var(--tm);font-size:.8rem;cursor:pointer;transition:all .25s;font-family:inherit}
+.filter{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border-radius:99px;background:var(--glass-chip);backdrop-filter:var(--glass-blur-sm);-webkit-backdrop-filter:var(--glass-blur-sm);border:1px solid var(--glass-border);color:var(--tm);font-size:.8rem;cursor:pointer;transition:all .25s;font-family:inherit}
 .filter:hover{border-color:var(--o-border);color:var(--t)}
 .filter.active{background:var(--o-soft);color:var(--o2);border-color:var(--o-border)}
 .filter-count{font-size:.7rem;opacity:.6}
@@ -99,6 +99,7 @@ section.work{padding:4rem 0 7rem}
   <span><a href="index.html">Home</a> · <a href="work.html">Work</a> · <a href="blog.html">Blog</a> · <a href="resume.html">Résumé</a></span>
 </footer>
 
+<script src="assets/js/wave-bg.js?v=2" defer></script>
 <script src="assets/js/main.js" defer></script>
 <script>
 // PROJECT DATA — newest first

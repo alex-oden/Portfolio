@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/styles.css?v=2">
 <style>
 /* ===== PAGE-SPECIFIC: blog-single.html ===== */
 .progress{position:fixed;top:var(--nh);left:0;right:0;height:2px;z-index:99;background:transparent}
@@ -55,25 +55,25 @@
 .article-figure-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,138,61,.4),transparent 60%)}
 .article-figure-cap{padding:.85rem 0 0;font-size:.8rem;color:var(--ts);text-align:center;font-style:italic;font-family:var(--fd)}
 .post-tags{display:flex;flex-wrap:wrap;gap:.5rem;padding:2.5rem 0;border-top:1px solid var(--line)}
-.post-tag{font-size:.75rem;padding:.4rem .9rem;border-radius:99px;background:var(--bg2);border:1px solid var(--line);color:var(--tm);text-decoration:none;transition:all .25s}
+.post-tag{font-size:.75rem;padding:.4rem .9rem;border-radius:99px;background:var(--glass-chip);backdrop-filter:var(--glass-blur-sm);-webkit-backdrop-filter:var(--glass-blur-sm);border:1px solid var(--glass-border);color:var(--tm);text-decoration:none;transition:all .25s}
 .post-tag:hover{border-color:var(--o-border);color:var(--o2);background:var(--o-soft)}
 .share{display:flex;align-items:center;gap:1rem;padding:2rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);flex-wrap:wrap}
 .share-lbl{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ts);font-weight:500}
 .share-buttons{display:flex;gap:.5rem;flex-wrap:wrap}
-.share-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1rem;border-radius:99px;background:var(--bg2);border:1px solid var(--line);color:var(--tm);font-size:.78rem;text-decoration:none;cursor:pointer;transition:all .25s;font-family:inherit}
+.share-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1rem;border-radius:99px;background:var(--glass-chip);backdrop-filter:var(--glass-blur-sm);-webkit-backdrop-filter:var(--glass-blur-sm);border:1px solid var(--glass-border);color:var(--tm);font-size:.78rem;text-decoration:none;cursor:pointer;transition:all .25s;font-family:inherit}
 .share-btn:hover{border-color:var(--o-border);color:var(--o2);background:var(--o-soft)}
-.author-card{margin-top:3rem;padding:2rem;background:var(--bg2);border:1px solid var(--line);border-radius:20px;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.author-card{margin-top:3rem;padding:2rem;background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:20px;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
 .author-card-avatar{width:64px;height:64px;border-radius:50%;background:var(--o-grad);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;font-weight:600;flex-shrink:0}
 .author-card-info{flex:1;min-width:200px}
 .author-card-name{font-family:var(--fd);font-size:1.4rem;font-weight:400;margin-bottom:.25rem;letter-spacing:-.01em}
 .author-card-bio{font-size:.85rem;color:var(--tm);line-height:1.55}
 .author-card-link{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.2rem;border-radius:99px;background:transparent;border:1px solid var(--line2);color:var(--t);text-decoration:none;font-size:.8rem;transition:all .25s}
 .author-card-link:hover{background:var(--o-soft);border-color:var(--o-border);color:var(--o2)}
-.related{padding:5rem 0;background:var(--bg2);border-top:1px solid var(--line)}
+.related{padding:5rem 0;background:var(--glass-veil);border-top:1px solid var(--line)}
 .related-h{font-family:var(--fd);font-size:clamp(1.75rem,3vw,2.25rem);font-weight:400;letter-spacing:-.015em;margin-bottom:2.5rem}
 .related-h em{font-style:italic}
 .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.related-card{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .3s,transform .3s}
+.related-card{display:flex;flex-direction:column;background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .3s,transform .3s}
 .related-card:hover{border-color:var(--o-border);transform:translateY(-4px)}
 .related-visual{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative}
 .related-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(255,255,255,.15),transparent 60%)}
@@ -245,6 +245,7 @@
   <span><a href="index.html">Home</a> · <a href="work.html">Work</a> · <a href="blog.html">Blog</a> · <a href="resume.html">Résumé</a></span>
 </footer>
 
+<script src="assets/js/wave-bg.js?v=2" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

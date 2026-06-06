@@ -17,8 +17,8 @@
   --line2:rgba(255,255,255,0.16);
   /* Text */
   --t:#F5F2EC;
-  --tm:rgba(245,242,236,0.62);
-  --ts:rgba(245,242,236,0.32);
+  --tm:rgba(245,242,236,0.78);
+  --ts:rgba(245,242,236,0.52);
   /* Orange brand palette */
   --o1:#FF5722;
   --o2:#FF8A3D;
@@ -34,6 +34,25 @@
   /* Layout */
   --nh:64px;
   --wrap:1440px;
+  /* Frosted glass — moderate opacity (readable) + backdrop blur.
+     Tune the whole site's glass from here. */
+  --glass:rgba(13,14,17,0.6);           /* card / panel fill (darkened) */
+  --glass-hover:rgba(20,21,25,0.74);    /* card / panel fill on hover   */
+  --glass-chip:rgba(255,255,255,0.05);  /* small pills & chips          */
+  --glass-border:rgba(255,255,255,0.12);/* glass edge                   */
+  --glass-veil:rgba(9,9,11,0.72);       /* translucent section bands    */
+  --glass-blur:blur(16px) saturate(135%);
+  --glass-blur-sm:blur(10px) saturate(120%);
+}
+/* Lighter blur on small screens — many glass panels over the animated
+   wave is the costlier path, so we ease the GPU load on phones. */
+@media(max-width:640px){
+  :root{--glass-blur:blur(11px) saturate(125%);--glass-blur-sm:blur(7px) saturate(115%)}
+}
+/* A faint top sheen so the frosted panels read as glass even when dark. */
+.svc,.pcard,.case-meta-cell,.stat,.case-nav-card,.featured-post,.post,
+.newsletter,.author-card,.related-card,.resume-meta-cell,.cert{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.07);
 }
 
 html{scroll-behavior:smooth}
@@ -158,14 +177,14 @@ body.menu-open{overflow:hidden}
 
 /* ---------- 6. TAGS / PILLS / SKILLS ---------- */
 .tag,.pcard-tag{font-size:.7rem;padding:.25rem .7rem;border-radius:99px;background:rgba(255,255,255,.06);color:var(--tm);border:1px solid var(--line)}
-.skill{font-size:.8rem;padding:.4rem .9rem;border-radius:99px;border:1px solid var(--line);color:var(--tm);background:var(--bg2);transition:all .25s}
+.skill{font-size:.8rem;padding:.4rem .9rem;border-radius:99px;border:1px solid var(--glass-border);color:var(--tm);background:var(--glass-chip);backdrop-filter:var(--glass-blur-sm);-webkit-backdrop-filter:var(--glass-blur-sm);transition:all .25s}
 .skill:hover{border-color:var(--o-border);color:var(--t);background:var(--o-soft)}
 .skill.primary{background:var(--o-soft);color:var(--o2);border-color:var(--o-border)}
 .skill-cloud{display:flex;flex-wrap:wrap;gap:.5rem}
 
 /* ---------- 7. PROJECT CARDS ---------- */
 .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
-.pcard{position:relative;background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:1.5rem;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .3s,transform .3s;cursor:pointer;display:flex;flex-direction:column}
+.pcard{position:relative;background:var(--glass);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:20px;padding:1.5rem;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .3s,transform .3s;cursor:pointer;display:flex;flex-direction:column}
 .pcard:hover{border-color:var(--o-border);transform:translateY(-4px)}
 .pcard.featured{grid-column:span 2}
 .pcard-visual{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;margin-bottom:1.25rem;background:var(--bg3);display:flex;align-items:center;justify-content:center}
